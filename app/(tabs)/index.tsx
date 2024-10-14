@@ -1,9 +1,11 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, Text, Pressable, View } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Link, router } from 'expo-router';
 
 export default function HomeScreen() {
   return (
@@ -46,6 +48,34 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
+      <View style={{
+        // backgroundColor:'yellow',
+        // padding:10,
+        flexDirection:'row'
+      }}>
+        <Pressable  style={{
+          backgroundColor: 'red',
+          paddingHorizontal:30,
+          paddingVertical:10,
+        }} onPress={() => router.back()}>
+          <Text style={{
+            color:'white'
+          }}>go Back</Text>
+        </Pressable>
+      </View>
+
+      <Pressable onPress={() => router.navigate('/List')}>
+        <Text className="text-white bg-violet-800 text-center py-3">Go to List</Text>
+      </Pressable>
+      <Pressable onPress={() => router.navigate('/Scroll')}>
+        <Text className="text-white bg-violet-800 text-center py-3">Go to Scroll</Text>
+      </Pressable>
+      <Pressable onPress={() => router.navigate('/FlatListAnim')}>
+        <Text className="text-white bg-violet-800 text-center py-3">Go to FlatAnimation</Text>
+      </Pressable>
+      <Pressable onPress={() => router.navigate('/gesture')}>
+        <Text className="text-white bg-violet-800 text-center py-3">Go to gesture</Text>
+      </Pressable>
     </ParallaxScrollView>
   );
 }
